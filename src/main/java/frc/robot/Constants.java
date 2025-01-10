@@ -33,6 +33,7 @@ public final class Constants {
   public static final int FrontRightSteerID = 2;
   public static final int FrontLeftDriveID = 3;
   public static final int FrontLeftSteerID = 4;
+  public static final int ExampleID = 9;
 
   // Swerve
   public static final SwerveModuleInfo FRONT_RIGHT = new SwerveModuleInfo(FrontRightDriveID, FrontRightSteerID, 3.371094, 360, 82.5, -1, -1);
@@ -41,6 +42,8 @@ public final class Constants {
   public static final SwerveModuleInfo BACK_LEFT = new SwerveModuleInfo(BackLeftDriveID, BackLeftSteerID, 3.496094, 360, 98.5, 1, 1);
 
   // Robot
+  // The MAX_ENCODER_VALUE is used to say what the max encoder value is, while REFERENCE_ANGLE is the starting angle. Both are currently unused, and are most likely going to get depracated.
+  public static final MotorInfo EXAMPLE_INFO = new MotorInfo(ExampleID, 0, 0);
 
   public static final class Swerve {
     public static final Translation2d flModuleOffset = new Translation2d(0.28, 0.28);
