@@ -20,6 +20,7 @@ import frc.robot.commands.DriveCommands.TeleopMoveCommand;
 
 // Subsystem Imports
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.ExampleSMSubsytem;
 
 // Dashboard Imports
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -27,6 +28,7 @@ import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 
 public class RobotContainer {
   DriveSubsystem drive = new DriveSubsystem();
+  ExampleSMSubsytem ESMS = new ExampleSMSubsytem();
   
   CommandXboxController commandDriverController = new CommandXboxController(Constants.DRIVE_CONTROL_PORT);
   XboxController driverController = new XboxController(Constants.DRIVE_CONTROL_PORT);
@@ -74,6 +76,8 @@ public class RobotContainer {
     // Shuffleboard.getTab("TabName").addDouble("DisplayName", () -> import.method())
     //   .withWidget("Widget")
     //   .withPosition(x, y);
+
+    Shuffleboard.getTab("test").addStringArray("Test", () -> ESMS.GetDebuggingInfo());
 
   }
 }

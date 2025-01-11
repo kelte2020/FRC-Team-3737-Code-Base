@@ -1,6 +1,5 @@
 package frc.robot.subsystems;
 
-import edu.wpi.first.units.measure.Current;
 import frc.robot.Constants;
 import frc.robot.motor.Motors;
 import frc.robot.motor.Motor.encoderType;
@@ -30,7 +29,7 @@ public class ExampleSMSubsytem {
     }
 
     /*  Below are the private methods, only able to be used in this file, we keep these above the public methods for ease of access.
-        The below are an example of a deadzone where movement stops and a current position for other files to use.  */
+        In a single motor transitional subsystem, there is normally no need for a private method, but I've exampled 2 below that could be used.  */
 
     private double CurrentPosition() {
 
@@ -51,7 +50,9 @@ public class ExampleSMSubsytem {
     }
 
     /*  Below are the public methods, our practice is to put Stop() at the bottom of the public pile and Move() or similar methods above it.
-        Any other public method, such as a set, get, or other method, will go above both Stop() and Move() or similar methods  */
+        The only exception is debugging information, that gets put at the very bottom and will be a get method, meaning it will return a value.
+        Any other public method, such as a set, get, or other method, will go above both Stop() and Move() or similar methods.
+        In the public organization, please do sets, then gets, than any other method, move methods, stop method, then debugging info.  */
 
     public void SetSpeed(double speed) {
 
@@ -69,39 +70,24 @@ public class ExampleSMSubsytem {
 
     }
 
-    public void Move(double target, double speed) {
+    /*  The following 2 methods are a replacement of Move() and splits it into two simple actions. Normally when moving there is no need for overcomplex move systems.
+        The exception are in double motor rotational systems or even multi motor transtional and rotational systems. Those systems often use more complex move systems.
+        Remember a positive motor value is not always a outwards/forwards/up movement, it depends on how the motor was put in. Same goes for negative, as you could guess.
+        Note: you could use an input instead of a variable for the motorspeed, but it makes more sense normally to have a speed variable and not part of the move.  */
 
-        /*  The code below used class variables, but could easily be replaced with method variables.
-            If you don't want to set target and speed every time, then you can make it an input.
-            Below is an example of variables being declared and used within a method.  */
+    public void PositiveMove() {
 
-        double minPosition = 10;
-        double maxPosition = 50;
+        /*  The motor will spin in the positive direction, at the given speed. (0 to 1)  */
 
-        /*  The following select ladder is an example of a safety check. This is to ensure that the robot does not break itself.
-            There is no need for two seperate if statements, because you should never surpass the max and min at the same time.
-            A safety check should be placed before the code that makes the arm move or be wrap around the move select ladder.  */
+        motor.Spin(motorSpeed);
 
-        if (CurrentPosition() > maxPosition) {
-            motor.Spin(-motorSpeed);
-            return;
-        } else if (CurrentPosition() < minPosition) {
-            motor.Spin(motorSpeed);
-            return;
-        }
+    }
 
-        /*  The following select ladder is an example of an automated move, no need to make a move one way and move the other way.
-            It is generally better to do a split when available, but some subsystems require them to both be in the same method.
-            This is what allows the system to move to a desired postition to move to where it needs to be, and stop when at its desired position.
-            You could also make the desired position public and let the command handle the stop instead of the method.  */
+    public void NegativeMove() {
 
-        if (IsInDesiredZone(4)) {
-            this.Stop();
-        } else if (CurrentPosition() < desiredPosition) {
-            motor.Spin(motorSpeed);
-        } else if (CurrentPosition() > desiredPosition) {
-            motor.Spin(-motorSpeed);
-        }
+        /*  The motor will spin in the negative direction, at the given speed. (-1 to 0)  */
+
+        motor.Spin(-motorSpeed);
 
     }
 
@@ -110,6 +96,12 @@ public class ExampleSMSubsytem {
         /*  This is very self explanatory, when this is called it stops the motor.  */
 
         motor.Spin(0);
+
+    }
+
+    public String[] GetDebuggingInfo() {
+
+        return motor.GetDebuggingInformation();
 
     }
 
