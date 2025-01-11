@@ -1,4 +1,4 @@
-package frc.robot.commands.ExampleCommands;
+package frc.robot.commands.ButtonCommands;
 
 public class ExampleButtonCommand {
     

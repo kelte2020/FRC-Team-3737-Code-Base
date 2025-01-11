@@ -1,5 +1,7 @@
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.DigitalInput;
 import frc.robot.Constants;
 import frc.robot.motor.Motors;
 import frc.robot.motor.Motor.encoderType;
@@ -13,6 +15,8 @@ public class ExampleSMSubsytem {
         Imports are from other libraries or files and allow you to use methods under those classes.  */
 
     private final Motors motor;
+    private final AnalogInput sensor;
+    private final DigitalInput microswitch;
     private double motorSpeed;
     private double desiredPosition;
     
@@ -25,6 +29,11 @@ public class ExampleSMSubsytem {
         motor = new Motors(Constants.EXAMPLE_INFO, encoderType.None);
         motorSpeed = 0;
         desiredPosition = 0;
+
+        /*  When aquiring a piece, you might want a surefire way to make sure you have it. You will either have a sensor or a microswitch.  */
+
+        sensor = new AnalogInput(0);
+        microswitch = new DigitalInput(0);
 
     }
 
@@ -39,6 +48,7 @@ public class ExampleSMSubsytem {
 
     }
 
+    @SuppressWarnings("unused")
     private boolean IsInDesiredZone(double deadzone) {
 
         /*  This is a way to create a deadzone that can say for the arm to stop, or say slow down. This can be used to define a safezone.
@@ -67,6 +77,35 @@ public class ExampleSMSubsytem {
         /*  This sets the desired position variable to whatever was inputted.  */
 
         desiredPosition = target;
+
+    }
+
+    /*  The following IsObjectIn/IsObjectOut are considered gets because you are recieving a variable from them. We use these to know when to move on to the next line of a command.
+        They could also be used as a way to know when to stop a command all together. Such as, if a motor temperature gets too hot, it cuts off the function.
+        You will see Switch and Sensor. A switch is a true/false value while a sensor returns a voltage value. The switch will always be more reliable then a sensor.
+        You might have the signs switched around, depending on how the robot is set up. These were both from Synthwave, before and after the switch.  */
+
+    public Boolean SwitchObjectIn() {
+
+        return !microswitch.get();
+
+    }
+
+    public Boolean SwitchObjectOut() {
+
+        return microswitch.get();
+
+    }
+
+    public Boolean SensorObjectIn() {
+
+        return sensor.getVoltage() < 0.01;
+
+    }
+
+    public Boolean SensorObjectOut() {
+
+        return sensor.getVoltage() > 0.1;
 
     }
 
