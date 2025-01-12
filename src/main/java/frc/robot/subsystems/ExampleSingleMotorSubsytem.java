@@ -6,7 +6,7 @@ import frc.robot.Constants;
 import frc.robot.motor.Motors;
 import frc.robot.motor.Motor.encoderType;
 
-public class ExampleSMSubsytem {
+public class ExampleSingleMotorSubsytem {
 
     /*  This is what a single motor subsystem will look like, in other words, a system with not secondary motor to depend on.
         This is also what a transitional based subsystem not rotational based subsytem will look like.
@@ -20,7 +20,7 @@ public class ExampleSMSubsytem {
     private double motorSpeed;
     private double desiredPosition;
     
-    public ExampleSMSubsytem() {
+    public ExampleSingleMotorSubsytem() {
 
         /*  Here, the constructor, is where you declare any final variables, or other variables you wish to start with a specified value.
             Variables can be declared here or with the variable itself instead of the constructor.
