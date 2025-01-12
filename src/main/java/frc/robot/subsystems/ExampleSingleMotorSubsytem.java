@@ -17,8 +17,11 @@ public class ExampleSingleMotorSubsytem {
     private final Motors motor;
     private final AnalogInput sensor;
     private final DigitalInput microswitch;
-    private double motorSpeed;
     private double desiredPosition;
+
+    /* TODO: add comment explaining why this variable is protected instead of private */
+
+    protected double motorSpeed;
     
     public ExampleSingleMotorSubsytem() {
 
