@@ -7,7 +7,7 @@ import frc.robot.Constants;
 import frc.robot.motor.Motors;
 import frc.robot.motor.Motor.encoderType;
 
-public class ExampleSingleMotorSubsytem extends SubsystemBase {
+public class ExampleSingleMotorSubsystem extends SubsystemBase {
 
     /*  This is what a single motor subsystem will look like, in other words, a system with not secondary motor to depend on.
         This is also what a transitional based subsystem not rotational based subsytem will look like.
@@ -36,7 +36,7 @@ public class ExampleSingleMotorSubsytem extends SubsystemBase {
 
     protected double motorSpeed;
     
-    public ExampleSingleMotorSubsytem() {
+    public ExampleSingleMotorSubsystem() {
 
         /*  Here, the constructor, is where you declare any final variables, or other variables you wish to start with a specified value.
             Variables can be declared here or with the variable itself instead of the constructor.
@@ -56,14 +56,6 @@ public class ExampleSingleMotorSubsytem extends SubsystemBase {
     /*  Below are the private methods, only able to be used in this file, we keep these above the public methods for ease of access.
         In a single motor transitional subsystem, there is normally no need for a private method, but I've exampled 2 below that could be used.  */
 
-    private double CurrentPosition() {
-
-        /*  The in built encoder only get the amount of rotations the motor makes. It is useless for continuous movements, such as an intake.  */
-
-        return motor.motor.inBuiltEncoder.getPosition();
-
-    }
-
     @SuppressWarnings("unused")
     private boolean IsInDesiredZone(double deadzone) {
 
@@ -71,7 +63,7 @@ public class ExampleSingleMotorSubsytem extends SubsystemBase {
             This creates an allowed leeway point, because we know that an angle can never be perfect. This is done by adding a zone of acceptance.
             Example 20 > 21 - 4 && 20 < 21 + 4 returns true, because it is within the 8 unit acceptence zone.  */
 
-        return desiredPosition > this.CurrentPosition() - deadzone && desiredPosition < this.CurrentPosition() + deadzone;
+        return desiredPosition > this.GetCurrentPosition() - deadzone && desiredPosition < this.GetCurrentPosition() + deadzone;
 
     }
 
@@ -122,6 +114,14 @@ public class ExampleSingleMotorSubsytem extends SubsystemBase {
     public Boolean SensorObjectOut() {
 
         return sensor.getVoltage() > 0.1;
+
+    }
+
+    public double GetCurrentPosition() {
+
+        /*  The in built encoder only get the amount of rotations the motor makes. It is useless for continuous movements, such as an intake.  */
+
+        return motor.motor.inBuiltEncoder.getPosition();
 
     }
 

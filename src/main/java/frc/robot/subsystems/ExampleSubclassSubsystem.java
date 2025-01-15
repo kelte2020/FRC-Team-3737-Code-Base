@@ -14,7 +14,7 @@ import frc.robot.motor.Motor.encoderType;
  * will affect any part of the ExampleSingleMotorSubsytem class.
  */
 
-public class ExampleSubclassSubsystem extends ExampleSingleMotorSubsytem {
+public class ExampleSubclassSubsystem extends ExampleSingleMotorSubsystem {
     
     private final Motors motor;
 

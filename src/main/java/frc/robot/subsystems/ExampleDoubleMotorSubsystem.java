@@ -104,11 +104,11 @@ public class ExampleDoubleMotorSubsystem extends SubsystemBase {
 
     }
 
-    public boolean IsReady() {
+    public boolean IsReady(double deadzone) {
 
         /*  If it is in the deadzone with a low enough velocity it will return true and the command can finish.  */
 
-        return IsInDeadzone(1) && motor.GetVelocity() < 100;
+        return IsInDeadzone(deadzone) && motor.GetVelocity() < 100;
 
     }
 

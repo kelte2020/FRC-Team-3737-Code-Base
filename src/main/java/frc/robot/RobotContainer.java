@@ -20,7 +20,7 @@ import frc.robot.commands.DriveCommands.TeleopMoveCommand;
 
 // Subsystem Imports
 import frc.robot.subsystems.DriveSubsystem;
-import frc.robot.subsystems.ExampleSingleMotorSubsytem;
+import frc.robot.subsystems.ExampleSingleMotorSubsystem;
 
 // Dashboard Imports
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -28,7 +28,7 @@ import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 
 public class RobotContainer {
   DriveSubsystem drive = new DriveSubsystem();
-  ExampleSingleMotorSubsytem ESMS = new ExampleSingleMotorSubsytem();
+  ExampleSingleMotorSubsystem ESMS = new ExampleSingleMotorSubsystem();
   
   CommandXboxController commandDriverController = new CommandXboxController(Constants.DRIVE_CONTROL_PORT);
   XboxController driverController = new XboxController(Constants.DRIVE_CONTROL_PORT);
