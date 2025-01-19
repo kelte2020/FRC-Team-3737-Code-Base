@@ -2,36 +2,49 @@ package frc.robot.auto;
 
 /*  First import your auto routines you wish to use.  */
 
-// Add imports here
+import frc.robot.auto.Routines.ExampleAutoRoutine;
 
 /*  Then, add your subsystems which you need.  */
 
-// Add imports here
+import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.ExampleSingleMotorSubsystem;
+import frc.robot.subsystems.ExampleDoubleMotorSubsystem;
 
 /*  Finally import the smart dashboard, sendable chooser, and command.  */
 
-// Add import here
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj2.command.Command;
 
 public class AutoPicker {
     
     /*  First you will make your variables for the subsystems.  */
 
-    // Add variables here
+    private final DriveSubsystem drive;
+    private final ExampleSingleMotorSubsystem singleMotorSubsystem;
+    private final ExampleDoubleMotorSubsystem doubleMotorSubsystem;
 
     /*  Then, you need to initialize the sendable chooser.  */
 
-    // Declare sendable chooser
-
-    /*  Now you will add your command variables.  */
-
-    // Add variables here
+    private final SendableChooser<Command> sendableChooser = new SendableChooser<>();
 
     /*  Now create the Constructor. Make sure to declare your subsystems, chooser options and where the data is going.  */
 
-    // Create Constuctor here
+    public AutoPicker(DriveSubsystem m_drive, ExampleSingleMotorSubsystem m_singleMotorSubsystem, ExampleDoubleMotorSubsystem m_doubleMotorSubsystem) {
 
-    /*  Now we move onto the methods. We need a set auto to set the command variables and a get auto that gets the chosen auto.  */
+        drive = m_drive;
+        singleMotorSubsystem = m_singleMotorSubsystem;
+        doubleMotorSubsystem = m_doubleMotorSubsystem;
 
-    // Add methods here
+        sendableChooser.setDefaultOption("Choose Auto", null);
+        sendableChooser.addOption("Example Auto", new ExampleAutoRoutine(m_singleMotorSubsystem, m_doubleMotorSubsystem, m_drive));
+
+    }
+
+    public Command GetAuto() {
+
+        return sendableChooser.getSelected();
+
+    }
 
 }
