@@ -155,7 +155,7 @@ public class ExampleSingleMotorSubsystem extends SubsystemBase {
 
     public String[] GetDebuggingInfo() {
 
-        return motor.GetDebuggingInformation();
+        return motor.GetDebuggingInformation("Example Single");
 
     }
 

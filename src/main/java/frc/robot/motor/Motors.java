@@ -50,19 +50,21 @@ public class Motors {
 
     }
     
-    public String[] GetDebuggingInformation() {
+    public String[] GetDebuggingInformation(String motorName) {
+
+        /*  Please keep motor name spaced out and all words start capitalized.  */
 
         String[] info = {
-            String.valueOf(motor.motor.getDeviceId()), 
-            String.valueOf(motor.motor.getMotorType()), 
-            String.valueOf(motor.motor.getFirmwareVersion()), 
-            String.valueOf(motor.motor.getBusVoltage()), 
-            String.valueOf(motor.motor.getAbsoluteEncoder()), 
-            String.valueOf(motor.motor.getAnalog()), 
-            String.valueOf(motor.motor.getStickyFaults()), 
-            String.valueOf(motor.motor.getFaults()), 
-            String.valueOf(motor.motor.getStickyWarnings()), 
-            String.valueOf(motor.motor.getWarnings())
+            motorName + " ID: " + String.valueOf(motor.motor.getDeviceId()), 
+            motorName + " Motor Type: " + String.valueOf(motor.motor.getMotorType()), 
+            motorName + " Firmware Version: " + String.valueOf(motor.motor.getFirmwareVersion()), 
+            motorName + " Bus Voltage: " + String.valueOf(motor.motor.getBusVoltage()), 
+            motorName + " Absolute Encoder: " + String.valueOf(motor.motor.getAbsoluteEncoder()), 
+            motorName + " Analog Encoder: " + String.valueOf(motor.motor.getAnalog()), 
+            motorName + " Sticky Faults: " + String.valueOf(motor.motor.getStickyFaults()), 
+            motorName + " Faults: " + String.valueOf(motor.motor.getFaults()), 
+            motorName + " Sticky Warnings: " + String.valueOf(motor.motor.getStickyWarnings()), 
+            motorName + " Warnings: " + String.valueOf(motor.motor.getWarnings())
         };
 
         return info;

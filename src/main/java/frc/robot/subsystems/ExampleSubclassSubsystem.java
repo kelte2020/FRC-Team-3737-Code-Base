@@ -70,7 +70,7 @@ public class ExampleSubclassSubsystem extends ExampleSingleMotorSubsystem {
 
     public String[] GetDebuggingInfo() {
 
-        return motor.GetDebuggingInformation();
+        return motor.GetDebuggingInformation("Example Alternate");
 
     }
 
