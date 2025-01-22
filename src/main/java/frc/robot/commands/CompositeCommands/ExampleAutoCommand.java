@@ -19,6 +19,8 @@ import edu.wpi.first.wpilibj2.command.WaitCommand;
 
 public class ExampleAutoCommand extends SequentialCommandGroup {
 
+    /*  Another one that wasn't able to be replicated great from past code. An auto command is basically a button command with softlock prevention for auto.  */
+
     public ExampleAutoCommand(ExampleSingleMotorSubsystem singleMotorSubsystem, ExampleDoubleMotorSubsystem doubleMotorSubsystem) {
 
         addCommands(

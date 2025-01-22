@@ -4,6 +4,8 @@ import edu.wpi.first.wpilibj2.command.Command;
 
 import frc.robot.subsystems.ExampleSingleMotorSubsystem;
 
+/*  Look at frc.robot.commands.ExampleSingleMotorCommands.ExampleMovePositiveCommand  */
+
 public class ExampleMoveNegativeCommand extends Command {
 
     final ExampleSingleMotorSubsystem singleMotorSubsystem;
@@ -23,12 +25,6 @@ public class ExampleMoveNegativeCommand extends Command {
     public void initialize() {
 
         singleMotorSubsystem.SetSpeed(motorSpeed);
-
-    }
-
-    @Override
-    public void execute() {
-
         singleMotorSubsystem.NegativeMove();
 
     }

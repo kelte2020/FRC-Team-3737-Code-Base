@@ -17,6 +17,8 @@ public class ExampleSwitchCommand extends Command {
     @Override
     public boolean isFinished() {
 
+        /*  Will simply return true when the switch detects and object.  */
+
         return singleMotorSubsystem.SwitchObjectIn();
 
     }

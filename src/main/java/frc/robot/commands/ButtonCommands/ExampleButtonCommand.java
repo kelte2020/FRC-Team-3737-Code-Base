@@ -19,6 +19,11 @@ import edu.wpi.first.wpilibj2.command.WaitCommand;
 
 public class ExampleButtonCommand extends SequentialCommandGroup {
 
+    /*  The following is a button command. It is a mix of base commands and intermediate commands in order to run a series of operations on the robot.
+        As you can see, this rotates and shoots in this case along with a wait command to prevent softlocking. Then it goes into a set of stops followed by another stop.
+        The second stop was added because in the training, we had the rookies imagine that the other example move on the same line as the stops was a different system.
+        The reason that wouldn't work was the add requirements, as stated in an earlier file.  */
+
     public ExampleButtonCommand(ExampleSingleMotorSubsystem singleMotorSubsystem, ExampleDoubleMotorSubsystem doubleMotorSubsystem) {
 
         addCommands(

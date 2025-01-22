@@ -86,13 +86,10 @@ public class ExampleDoubleMotorSubsystem extends SubsystemBase {
         double minAngle = 20;
         double maxAngle = 120;
 
-        if (angle < minAngle) {
+        if (angle < minAngle || angle > maxAngle) {
             Stop();
             return;
-        } else if (angle > maxAngle) {
-            Stop();
-            return;
-        } 
+        }
 
         double pidValue = pid.GetPIDValue(angle, desiredAngle);
 
