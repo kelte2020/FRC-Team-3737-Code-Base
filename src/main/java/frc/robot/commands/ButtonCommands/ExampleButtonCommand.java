@@ -6,8 +6,7 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 
 /*  Then, add your subsystem imports that will be needed for the operation of your commands.  */
 
-import frc.robot.subsystems.ExampleSingleMotorSubsystem;
-import frc.robot.subsystems.ExampleDoubleMotorSubsystem;
+import frc.robot.utils.SubsystemList;
 
 /*  Finally, add your command imports for all the command you need for the operation of the button.  */
 
@@ -24,15 +23,13 @@ public class ExampleButtonCommand extends SequentialCommandGroup {
         The second stop was added because in the training, we had the rookies imagine that the other example move on the same line as the stops was a different system.
         The reason that wouldn't work was the add requirements, as stated in an earlier file.  */
 
-    public ExampleButtonCommand(ExampleSingleMotorSubsystem singleMotorSubsystem, ExampleDoubleMotorSubsystem doubleMotorSubsystem) {
+    public ExampleButtonCommand(SubsystemList subsystems) {
 
         addCommands(
-            new ExampleMovePositiveCommand(singleMotorSubsystem, 0.5).alongWith(new ExampleRotationCommand(doubleMotorSubsystem, 90, 0.5).raceWith(new WaitCommand(0.5))),
-            new ExampleStopCommand(singleMotorSubsystem).alongWith(new ExampleRotationStopCommand(doubleMotorSubsystem)),
-            new ExampleStopCommand(singleMotorSubsystem)
+            new ExampleMovePositiveCommand(subsystems, 0.5).alongWith(new ExampleRotationCommand(subsystems, 90, 0.5).raceWith(new WaitCommand(0.5))),
+            new ExampleStopCommand(subsystems).alongWith(new ExampleRotationStopCommand(subsystems)),
+            new ExampleStopCommand(subsystems)
         );
-
-        addRequirements(singleMotorSubsystem, doubleMotorSubsystem);
 
     }
     

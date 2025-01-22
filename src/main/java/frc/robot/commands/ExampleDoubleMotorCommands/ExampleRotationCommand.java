@@ -2,6 +2,7 @@ package frc.robot.commands.ExampleDoubleMotorCommands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 
+import frc.robot.utils.SubsystemList;
 import frc.robot.subsystems.ExampleDoubleMotorSubsystem;
 
 public class ExampleRotationCommand extends Command{
@@ -15,9 +16,9 @@ public class ExampleRotationCommand extends Command{
     private final double target;
     private final double deadzone;
 
-    public ExampleRotationCommand(ExampleDoubleMotorSubsystem m_doubleMotorSubsystem, double m_target, double m_deadzone) {
+    public ExampleRotationCommand(SubsystemList subsystems, double m_target, double m_deadzone) {
 
-        doubleMotorSubsystem = m_doubleMotorSubsystem;
+        doubleMotorSubsystem = (ExampleDoubleMotorSubsystem) subsystems.getSubsystem("doubleMotor");
 
         target = m_target;
         deadzone = m_deadzone;

@@ -2,6 +2,7 @@ package frc.robot.commands.ExampleSingleMotorCommands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 
+import frc.robot.utils.SubsystemList;
 import frc.robot.subsystems.ExampleSingleMotorSubsystem;
 
 public class ExampleCheckCommand extends Command {
@@ -16,9 +17,9 @@ public class ExampleCheckCommand extends Command {
     private double initialDistance;
     private double currentDistance;
 
-    public ExampleCheckCommand(ExampleSingleMotorSubsystem m_singleMotorSubsystem, double m_target) {
+    public ExampleCheckCommand(SubsystemList subsystems, double m_target) {
 
-        singleMotorSubsystem = m_singleMotorSubsystem;
+        singleMotorSubsystem = (ExampleSingleMotorSubsystem) subsystems.getSubsystem("singleMotor");
 
         target = m_target;
 

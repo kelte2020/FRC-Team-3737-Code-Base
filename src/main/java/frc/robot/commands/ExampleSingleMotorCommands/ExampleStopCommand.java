@@ -2,6 +2,7 @@ package frc.robot.commands.ExampleSingleMotorCommands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 
+import frc.robot.utils.SubsystemList;
 import frc.robot.subsystems.ExampleSingleMotorSubsystem;
 
 public class ExampleStopCommand extends Command {
@@ -12,9 +13,9 @@ public class ExampleStopCommand extends Command {
 
     final ExampleSingleMotorSubsystem singleMotorSubsystem;
 
-    public ExampleStopCommand(ExampleSingleMotorSubsystem m_singleMotorSubsystem) {
+    public ExampleStopCommand(SubsystemList subsystems) {
 
-        singleMotorSubsystem = m_singleMotorSubsystem;
+        singleMotorSubsystem = (ExampleSingleMotorSubsystem) subsystems.getSubsystem("singleMotor");
 
         addRequirements(singleMotorSubsystem);
 

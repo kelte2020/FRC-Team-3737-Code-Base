@@ -2,6 +2,7 @@ package frc.robot.commands.ExampleSingleMotorCommands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 
+import frc.robot.utils.SubsystemList;
 import frc.robot.subsystems.ExampleSingleMotorSubsystem;
 
 /*  Import Command and the necessary subsystem for a base command. Command is then extended so we can use its methods.
@@ -17,9 +18,9 @@ public class ExampleMovePositiveCommand extends Command {
     final ExampleSingleMotorSubsystem singleMotorSubsystem;
     private final double motorSpeed;
 
-    public ExampleMovePositiveCommand(ExampleSingleMotorSubsystem m_singleMotorSubsystem, double speed) {
+    public ExampleMovePositiveCommand(SubsystemList subsystems, double speed) {
 
-        singleMotorSubsystem = m_singleMotorSubsystem;
+        singleMotorSubsystem = (ExampleSingleMotorSubsystem) subsystems.getSubsystem("singleMotor");
 
         motorSpeed = speed;
 

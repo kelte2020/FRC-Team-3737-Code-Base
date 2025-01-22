@@ -45,7 +45,7 @@ public class RobotContainer {
   AutoPicker autoPicker = new AutoPicker(subsystemList);
 
   public RobotContainer() {
-    drive.setDefaultCommand(new DriveStopCommand(drive));
+    drive.setDefaultCommand(new DriveStopCommand(subsystemList));
 
     configureBindings();
   }
@@ -65,7 +65,7 @@ public class RobotContainer {
       .or(commandDriverController.axisGreaterThan(3, 0.1))
       .or(commandDriverController.leftBumper())
       .or(commandDriverController.rightBumper())
-      .onTrue(new TeleopMoveCommand(drive, driverController));
+      .onTrue(new TeleopMoveCommand(subsystemList, driverController));
 
     // Operator Triggers
 

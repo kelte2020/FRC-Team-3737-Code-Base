@@ -1,9 +1,9 @@
 package frc.robot.commands.DriveCommands;
 
-import edu.wpi.first.wpilibj2.command.Command;
-
+import edu.wpi.first.wpilibj2.command.Command; 
 import frc.robot.utils.VectorR;
 
+import frc.robot.utils.SubsystemList;
 import frc.robot.subsystems.DriveSubsystem;
 
 public class AutoMoveCommand extends Command {
@@ -20,9 +20,9 @@ public class AutoMoveCommand extends Command {
     private double desiredAngle;
 
 
-    public AutoMoveCommand(DriveSubsystem m_drive, double m_distance, double m_angle, double m_magnitude, double m_turnSpeed, double m_desiredAngle) {
+    public AutoMoveCommand(SubsystemList subsystems, double m_distance, double m_angle, double m_magnitude, double m_turnSpeed, double m_desiredAngle) {
 
-        drive = m_drive;
+        drive = (DriveSubsystem) subsystems.getSubsystem("drive");
         moveSpeed = new VectorR();
         desiredPosition = m_distance;
         angle = m_angle;

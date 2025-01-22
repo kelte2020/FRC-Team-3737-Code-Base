@@ -2,6 +2,7 @@ package frc.robot.commands.ExampleSingleMotorCommands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 
+import frc.robot.utils.SubsystemList;
 import frc.robot.subsystems.ExampleSingleMotorSubsystem;
 
 /*  Look at frc.robot.commands.ExampleSingleMotorCommands.ExampleMovePositiveCommand  */
@@ -11,9 +12,9 @@ public class ExampleMoveNegativeCommand extends Command {
     final ExampleSingleMotorSubsystem singleMotorSubsystem;
     private final double motorSpeed;
 
-    public ExampleMoveNegativeCommand(ExampleSingleMotorSubsystem m_singleMotorSubsystem, double speed) {
+    public ExampleMoveNegativeCommand(SubsystemList subsystems, double speed) {
 
-        singleMotorSubsystem = m_singleMotorSubsystem;
+        singleMotorSubsystem = (ExampleSingleMotorSubsystem) subsystems.getSubsystem("singleMotor");
 
         motorSpeed = speed;
 

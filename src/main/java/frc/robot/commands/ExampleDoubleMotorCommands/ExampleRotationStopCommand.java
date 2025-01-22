@@ -2,6 +2,7 @@ package frc.robot.commands.ExampleDoubleMotorCommands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 
+import frc.robot.utils.SubsystemList;
 import frc.robot.subsystems.ExampleDoubleMotorSubsystem;
 
 /*  Look at frc.robot.commands.ExampleSingleMotorCommands.ExampleStopCommand  */
@@ -10,9 +11,9 @@ public class ExampleRotationStopCommand extends Command {
 
     final ExampleDoubleMotorSubsystem doubleMotorSubsystem;
 
-    public ExampleRotationStopCommand(ExampleDoubleMotorSubsystem m_doubleMotorSubsystem) {
+    public ExampleRotationStopCommand(SubsystemList subsystems) {
 
-        doubleMotorSubsystem = m_doubleMotorSubsystem;
+        doubleMotorSubsystem = (ExampleDoubleMotorSubsystem) subsystems.getSubsystem("doubleMotor");
 
         addRequirements(doubleMotorSubsystem);
 
