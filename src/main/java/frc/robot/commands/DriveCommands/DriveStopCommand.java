@@ -18,7 +18,7 @@ public class DriveStopCommand extends Command {
     }
 
     @Override
-    public void execute() {
+    public void initialize() {
         drive.stop();
     }
 
