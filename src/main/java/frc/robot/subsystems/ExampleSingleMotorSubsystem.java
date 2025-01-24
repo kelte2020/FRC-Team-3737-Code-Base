@@ -45,6 +45,9 @@ public class ExampleSingleMotorSubsystem extends SubsystemBase {
             The constructor will always be "public {filename}() {}"  */
 
         motor = new Motors(Constants.EXAMPLE_INFO);
+
+        /*  These are optional declarations, because they get declared later on through other methods.  */
+
         motorSpeed = 0;
         desiredPosition = 0;
 
