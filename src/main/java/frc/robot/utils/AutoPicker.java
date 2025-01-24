@@ -12,8 +12,6 @@ import edu.wpi.first.wpilibj2.command.Command;
 
 public class AutoPicker {
     
-    /*  First you will make your variables for the subsystems.  */
-
     /*  Then, you need to initialize the sendable chooser.  */
 
     private final SendableChooser<Command> sendableChooser = new SendableChooser<>();
