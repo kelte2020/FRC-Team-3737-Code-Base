@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -15,6 +16,8 @@ public class ExampleSingleMotorSubsystem extends SubsystemBase {
         Imports are from other libraries or files and allow you to use methods under those classes.  */
 
     private final Motors motor;
+    private final Servo servoLeft;
+    private final Servo servoRight;
     private final AnalogInput sensor;
     private final DigitalInput microswitch;
     private double desiredPosition;
@@ -47,8 +50,13 @@ public class ExampleSingleMotorSubsystem extends SubsystemBase {
 
         /*  When aquiring a piece, you might want a surefire way to make sure you have it. You will either have a sensor or a microswitch.  */
 
-        sensor = new AnalogInput(0);
-        microswitch = new DigitalInput(0);
+        sensor = new AnalogInput(0); //PWM Channel
+        microswitch = new DigitalInput(0); //DIO Channel
+
+        /*  In some cases you might need to use a servo to move an object. It has many uses in the mechanical world. */
+
+        servoLeft = new Servo(1); //PWM Channel
+        servoRight = new Servo(2); //PWM Channel
 
     }
 
@@ -121,6 +129,31 @@ public class ExampleSingleMotorSubsystem extends SubsystemBase {
         /*  The in built encoder only get the amount of rotations the motor makes. It is useless for continuous movements, such as an intake.  */
 
         return motor.motor.inBuiltEncoder.getPosition();
+
+    }
+
+    public boolean IsServosIn() {
+
+        /*  Gets if the servos are in the place yet. These get the set value and not their current value as they have no way to tell you their current value.  */
+
+        return servoLeft.get() == 1 && servoRight.get() == 1;
+
+    }
+
+    /*  The following 2 methods aren't motor move, but servo move methods. Read the motor move methods comment for more information about move() methods.
+        Servo's work in a 0-1 range, and run 180 degrees. In this case, assume 1 rotates them in, allowing something to enter another object.  */
+
+    public void ServosIn() {
+
+        servoLeft.set(1);
+        servoRight.set(1);
+
+    }
+
+    public void ServosOut() {
+
+        servoLeft.set(0);
+        servoRight.set(0);
 
     }
 
